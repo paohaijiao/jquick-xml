@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 这是一个XML测试样例文件 -->
+<testsuites>
+    <!-- 测试套件1 -->
+    <testsuite id="TS001" name="登录模块测试">
+        <testcase id="TC001" priority="high">
+            <name>用户登录成功测试</name>
+            <steps>
+                <step number="1">打开登录页面</step>
+                <step number="2">输入用户名</step>
+                <step number="3">输入密码</step>
+                <step number="4">点击登录按钮</step>
+            </steps>
+            <expected>跳转到首页</expected>
+            <actual status="passed"/>
+        </testcase>
+
+        <testcase id="TC002" priority="medium">
+            <name>密码错误测试</name>
+            <expected>显示错误提示</expected>
+            <actual status="failed">未弹出提示框</actual>
+        </testcase>
+    </testsuite>
+
+    <!-- 测试套件2 -->
+    <testsuite id="TS002" name="订单模块测试">
+        <testcase id="TC003">
+            <name>创建订单</name>
+            <data>
+                <product id="P1001">手机</product>
+                <quantity>2</quantity>
+                <price currency="CNY">5999.00</price>
+            </data>
+        </testcase>
+    </testsuite>
+
+    <!-- CDATA示例 -->
+    <config>
+        <![CDATA[
+        function validate(xml) {
+            return xml.match(/<testcase.*?>/g);
+        }
+        ]]>
+    </config>
+</testsuites>
