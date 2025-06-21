@@ -50,9 +50,10 @@ public class JXMLTest {
         JQuickXMLParser parser = new JQuickXMLParser(tokens);
         JQuickXMLParser.DocumentContext tree = parser.document();
         JQuickXMLCommonVisitor tv = new JQuickXMLCommonVisitor();
-        Object object= tv.visit(tree);
+        Object object = tv.visit(tree);
         System.out.println(object);
     }
+
     @Test
     public void test02() throws IOException {
         String inputFile = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -72,20 +73,9 @@ public class JXMLTest {
         JQuickXMLParser parser = new JQuickXMLParser(tokens);
         JQuickXMLParser.DocumentContext tree = parser.document();
         JQuickXMLCommonVisitor tv = new JQuickXMLCommonVisitor();
-        Object object= tv.visit(tree);
+        Object object = tv.visit(tree);
         System.out.println(object);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
