@@ -1,8 +1,8 @@
-package com.paohaijiao.javelin;
+package com.github.paohaijiao;
 
 import com.paohaijiao.javelin.adaptor.JQuickAdaptor;
 import com.paohaijiao.javelin.exception.JAntlrExecutionException;
-import com.paohaijiao.javelin.executor.JQuickRestExecutor;
+import com.github.paohaijiao.executor.JQuickRestExecutor;
 import com.paohaijiao.javelin.resource.JQuickReader;
 import com.paohaijiao.javelin.resource.impl.JQuickReSourceFileReader;
 

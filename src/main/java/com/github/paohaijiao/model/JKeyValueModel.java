@@ -13,7 +13,7 @@
  *
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
-package com.paohaijiao.javelin.model;
+package com.github.paohaijiao.model;
 
 import lombok.Data;
 

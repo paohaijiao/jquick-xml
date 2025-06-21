@@ -14,15 +14,14 @@
  * Copyright (c) [2025-2099] Martin (goudingcheng@gmail.com)
  */
 
-import com.paohaijiao.javelin.parser.JQuickXMLLexer;
-import com.paohaijiao.javelin.parser.JQuickXMLParser;
-import com.paohaijiao.javelin.visitor.JQuickXMLCommonVisitor;
+import com.github.paohaijiao.parser.JQuickXMLLexer;
+import com.github.paohaijiao.parser.JQuickXMLParser;
+import com.github.paohaijiao.visitor.JQuickXMLCommonVisitor;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * packageName PACKAGE_NAME
