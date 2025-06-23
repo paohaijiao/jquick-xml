@@ -2,7 +2,7 @@ package com.github.paohaijiao;
 
 import com.github.paohaijiao.executor.JQuickRestExecutor;
 import com.paohaijiao.javelin.adaptor.JQuickAdaptor;
-import com.paohaijiao.javelin.exception.JAntlrExecutionException;
+import com.github.paohaijiao.exception.JAntlrExecutionException;
 import com.paohaijiao.javelin.resource.JQuickReader;
 import com.paohaijiao.javelin.resource.impl.JQuickReSourceFileReader;
 

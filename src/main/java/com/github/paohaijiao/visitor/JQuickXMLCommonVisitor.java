@@ -3,7 +3,7 @@ package com.github.paohaijiao.visitor;
 import com.github.paohaijiao.parser.JQuickXMLParser;
 import com.paohaijiao.javelin.model.JSONArray;
 import com.paohaijiao.javelin.model.JSONObject;
-import com.paohaijiao.javelin.util.JStringUtils;
+import com.github.paohaijiao.util.JStringUtils;
 
 public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
 
