@@ -1,8 +1,9 @@
 package com.github.paohaijiao.visitor;
 
+import com.github.paohaijiao.model.JSONArray;
+import com.github.paohaijiao.model.JSONObject;
 import com.github.paohaijiao.parser.JQuickXMLParser;
-import com.paohaijiao.javelin.model.JSONArray;
-import com.paohaijiao.javelin.model.JSONObject;
+
 import com.github.paohaijiao.util.JStringUtils;
 
 public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
@@ -47,7 +48,7 @@ public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
         JSONObject json = new JSONObject();
         String key = ctx.Name(0).getText();
         String name = ctx.getText();
-        JSONArray attrs = new JSONArray();
+        JSONArray attrs= new JSONArray();
         Object value = null;
         if (ctx.attribute() != null && !ctx.attribute().isEmpty()) {
             for (JQuickXMLParser.AttributeContext attrContext : ctx.attribute()) {
@@ -58,10 +59,8 @@ public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
         if (ctx.content() != null) {
             value = visitContent(ctx.content());
         }
-        JSONObject result = new JSONObject();
-        result.put("value", value);
-        result.put("attr", attrs);
-        json.put(key, result);
+        json.put(key, value);
+        json.put(attributes,attrs);
         return json;
     }
 

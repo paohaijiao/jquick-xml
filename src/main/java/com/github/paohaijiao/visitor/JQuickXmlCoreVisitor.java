@@ -1,9 +1,9 @@
 package com.github.paohaijiao.visitor;
 
+import com.github.paohaijiao.model.JSONArray;
+import com.github.paohaijiao.model.JSONObject;
 import com.github.paohaijiao.parser.JQuickXMLParser;
 import com.github.paohaijiao.parser.JQuickXMLParserBaseVisitor;
-import com.paohaijiao.javelin.model.JSONArray;
-import com.paohaijiao.javelin.model.JSONObject;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
