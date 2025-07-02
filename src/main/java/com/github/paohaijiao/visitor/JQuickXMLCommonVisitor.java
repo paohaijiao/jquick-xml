@@ -10,15 +10,35 @@ public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
 
     @Override
     public JSONObject visitDocument(JQuickXMLParser.DocumentContext ctx) {
+        JSONObject object = new JSONObject();
         if (ctx.element() != null) {
-            return visitElement(ctx.element());
+            JSONObject element= visitElement(ctx.element());
+            for (String key : element.keySet()) {
+                object.put(key, element.get(key));
+            }
         }
-        return null;
+        if (ctx.prolog() != null) {
+            JSONObject element= visitProlog(ctx.prolog());
+            for (String key : element.keySet()) {
+                object.put(key, element.get(key));
+            }
+        }
+        if (ctx.misc() != null) {
+            for (JQuickXMLParser.MiscContext misc : ctx.misc()) {
+                JSONObject element= visitMisc(misc);
+                for (String key : element.keySet()) {
+                    object.put(key, element.get(key));
+                }
+            }
+        }
+        return object;
     }
 
     @Override
     public JSONObject visitProlog(JQuickXMLParser.PrologContext ctx) {
-        return new JSONObject();
+        JSONObject obj= new JSONObject();
+        obj.put(prolog,ctx.getText());
+        return obj;
     }
 
     @Override
@@ -60,7 +80,9 @@ public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
             value = visitContent(ctx.content());
         }
         json.put(key, value);
-        json.put(attributes,attrs);
+        if(!attrs.isEmpty()){
+            json.put(attributes,attrs);
+        }
         return json;
     }
 
@@ -104,10 +126,11 @@ public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
         } else if (ctx.PI() != null) {
             json.put(pi, ctx.PI().getText());
             return json;
-        } else {
-            json.put(seaWs, ctx.SEA_WS().getText());
+        } else if(ctx.DOCTYPE() != null){
+            json.put(docType, ctx.DOCTYPE().getText());
             return json;
         }
+        return json;
     }
 
 

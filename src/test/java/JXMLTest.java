@@ -77,5 +77,33 @@ public class JXMLTest {
         System.out.println(object);
     }
 
+    @Test
+    public void test03() throws IOException {
+        String inputFile = "<?xml version=\"1.0\"?>\n" +
+                "<!DOCTYPE catalog [\n" +
+                "  <!ELEMENT catalog (book+)>\n" +
+                "  <!ELEMENT book (title,author,price)>\n" +
+                "  <!ELEMENT title (#PCDATA)>\n" +
+                "  <!ELEMENT author (#PCDATA)>\n" +
+                "  <!ELEMENT price (#PCDATA)>\n" +
+                "  <!ATTLIST book id ID #REQUIRED>\n" +
+                "]>\n" +
+                "<catalog>\n" +
+                "  <book id=\"bk101\">\n" +
+                "    <title>XML Developer's Guide</title>\n" +
+                "    <author>Gambardella, Matthew</author>\n" +
+                "    <price>44.95</price>\n" +
+                "  </book>\n" +
+                "</catalog>";
+        System.out.println(inputFile);
+        JQuickXMLLexer lexer = new JQuickXMLLexer(CharStreams.fromString(inputFile));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        JQuickXMLParser parser = new JQuickXMLParser(tokens);
+        JQuickXMLParser.DocumentContext tree = parser.document();
+        JQuickXMLCommonVisitor tv = new JQuickXMLCommonVisitor();
+        Object object = tv.visit(tree);
+        System.out.println(object);
+    }
+
 
 }

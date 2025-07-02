@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class JQuickXmlCoreVisitor extends JQuickXMLParserBaseVisitor {
     protected final String cdata = "cdata";
+    protected final String prolog = "prolog";
     protected final String text = "text";
     protected final String element = "element";
     protected final String comment = "comment";
@@ -16,6 +17,7 @@ public class JQuickXmlCoreVisitor extends JQuickXMLParserBaseVisitor {
     protected final String attributes = "attributes";
     protected final String postMisc = "postMisc";
     protected static final String seaWs = "seaWs";
+    protected static final String docType = "docType";
     protected static final String name = "name";
     protected static final String entityRef = "entityRef";
     protected static final String charRef = "charRef";
