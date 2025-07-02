@@ -105,5 +105,106 @@ public class JXMLTest {
         System.out.println(object);
     }
 
+    @Test
+    public void test04() throws IOException {
+        String inputFile = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<!-- 这是一个XML语法测试文件 -->\n" +
+                "<testDocument xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+                "              xsi:noNamespaceSchemaLocation=\"testSchema.xsd\">\n" +
+                "  \n" +
+                "  <!-- 基本元素测试 -->\n" +
+                "  <basicElements>\n" +
+                "    <emptyElement/>\n" +
+                "    <textElement>这是一个包含文本的元素</textElement>\n" +
+                "    <mixedContent>这是混合<bold>内容</bold>的示例</mixedContent>\n" +
+                "    <elementWithAttributes id=\"001\" type=\"sample\" valid=\"true\"/>\n" +
+                "  </basicElements>\n" +
+                "  \n" +
+                "  <!-- 嵌套结构测试 -->\n" +
+                "  <nestedStructures>\n" +
+                "    <parent>\n" +
+                "      <child sequence=\"1\">\n" +
+                "        <grandchild>第一项</grandchild>\n" +
+                "      </child>\n" +
+                "      <child sequence=\"2\">\n" +
+                "        <grandchild>第二项</grandchild>\n" +
+                "      </child>\n" +
+                "    </parent>\n" +
+                "  </nestedStructures>\n" +
+                "  \n" +
+                "  <!-- 特殊字符测试 -->\n" +
+                "  <specialCharacters>\n" +
+                "    <lessThan><![CDATA[这里可以包含特殊字符如 < > & ' \"]]></lessThan>\n" +
+                "    <escapedChars>&lt; &gt; &amp; &apos; &quot;</escapedChars>\n" +
+                "  </specialCharacters>\n" +
+                "  \n" +
+                "  <!-- 命名空间测试 -->\n" +
+                "  <ns:namespaces xmlns:ns=\"http://example.com/ns\">\n" +
+                "    <ns:item ns:id=\"ns1\">命名空间项目1</ns:item>\n" +
+                "    <ns:item ns:id=\"ns2\">命名空间项目2</ns:item>\n" +
+                "  </ns:namespaces>\n" +
+                "  \n" +
+                "  <!-- 注释和CDATA测试 -->\n" +
+                "  <commentsAndCDATA>\n" +
+                "    <!-- 这是一个注释 -->\n" +
+                "    <description><![CDATA[\n" +
+                "      这里可以包含任意文本，包括 < > & 等特殊字符\n" +
+                "      甚至多行内容\n" +
+                "    ]]></description>\n" +
+                "  </commentsAndCDATA>\n" +
+                "  \n" +
+                "  <!-- 处理指令 -->\n" +
+                "  <?xml-stylesheet type=\"text/xsl\" href=\"style.xsl\"?>\n" +
+                "  \n" +
+                "  <!-- 数据类型测试 -->\n" +
+                "  <dataTypes>\n" +
+                "    <string>文本数据</string>\n" +
+                "    <number>12345</number>\n" +
+                "    <float>3.14159</float>\n" +
+                "    <boolean>true</boolean>\n" +
+                "    <date>2023-05-15</date>\n" +
+                "    <time>13:45:30</time>\n" +
+                "    <dateTime>2023-05-15T13:45:30Z</dateTime>\n" +
+                "  </dataTypes>\n" +
+                "  \n" +
+                "</testDocument>";
+        System.out.println(inputFile);
+        JQuickXMLLexer lexer = new JQuickXMLLexer(CharStreams.fromString(inputFile));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        JQuickXMLParser parser = new JQuickXMLParser(tokens);
+        JQuickXMLParser.DocumentContext tree = parser.document();
+        JQuickXMLCommonVisitor tv = new JQuickXMLCommonVisitor();
+        Object object = tv.visit(tree);
+        System.out.println(object);
+    }
+    @Test
+    public void test05() throws IOException {
+        String inputFile = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<dataStorage>\n" +
+                "  <records>\n" +
+                "    <record id=\"101\">\n" +
+                "      <name>张三</name>\n" +
+                "      <age>28</age>\n" +
+                "      <email>zhangsan@example.com</email>\n" +
+                "      <department>技术部</department>\n" +
+                "    </record>\n" +
+                "    <record id=\"102\">\n" +
+                "      <name>李四</name>\n" +
+                "      <age>35</age>\n" +
+                "      <email>lisi@example.com</email>\n" +
+                "      <department>市场部</department>\n" +
+                "    </record>\n" +
+                "  </records>\n" +
+                "</dataStorage>";
+        System.out.println(inputFile);
+        JQuickXMLLexer lexer = new JQuickXMLLexer(CharStreams.fromString(inputFile));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        JQuickXMLParser parser = new JQuickXMLParser(tokens);
+        JQuickXMLParser.DocumentContext tree = parser.document();
+        JQuickXMLCommonVisitor tv = new JQuickXMLCommonVisitor();
+        Object object = tv.visit(tree);
+        System.out.println(object);
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.github.paohaijiao.executor;
 
+import com.github.paohaijiao.model.JSONObject;
 import com.github.paohaijiao.parser.JQuickXMLLexer;
 import com.github.paohaijiao.parser.JQuickXMLParser;
 import com.github.paohaijiao.visitor.JQuickXMLCommonVisitor;
@@ -10,7 +11,7 @@ import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.TokenStream;
 
-public class JQuickRestExecutor extends JAbstractAntlrExecutor<String, Object> {
+public class JQuickXMLExecutor extends JAbstractAntlrExecutor<String, JSONObject> {
     @Override
     protected Lexer createLexer(CharStream input) {
         return new JQuickXMLLexer(input);
@@ -22,10 +23,11 @@ public class JQuickRestExecutor extends JAbstractAntlrExecutor<String, Object> {
     }
 
     @Override
-    protected Object parse(Parser parser) throws JAntlrExecutionException {
+    protected JSONObject parse(Parser parser) throws JAntlrExecutionException {
         JQuickXMLParser calcParser = (JQuickXMLParser) parser;
         JQuickXMLParser.DocumentContext tree = calcParser.document();
         JQuickXMLCommonVisitor visitor = new JQuickXMLCommonVisitor();
-        return visitor.visit(tree);
+        JSONObject object= visitor.visitDocument(tree);
+        return  object;
     }
 }

@@ -17,20 +17,20 @@ public class JQuickXMLCommonVisitor extends JQuickXmlCoreVisitor {
                 object.put(key, element.get(key));
             }
         }
-        if (ctx.prolog() != null) {
-            JSONObject element= visitProlog(ctx.prolog());
-            for (String key : element.keySet()) {
-                object.put(key, element.get(key));
-            }
-        }
-        if (ctx.misc() != null) {
-            for (JQuickXMLParser.MiscContext misc : ctx.misc()) {
-                JSONObject element= visitMisc(misc);
-                for (String key : element.keySet()) {
-                    object.put(key, element.get(key));
-                }
-            }
-        }
+//        if (ctx.prolog() != null) {
+//            JSONObject element= visitProlog(ctx.prolog());
+//            for (String key : element.keySet()) {
+//                object.put(key, element.get(key));
+//            }
+//        }
+//        if (ctx.misc() != null) {
+//            for (JQuickXMLParser.MiscContext misc : ctx.misc()) {
+//                JSONObject element= visitMisc(misc);
+//                for (String key : element.keySet()) {
+//                    object.put(key, element.get(key));
+//                }
+//            }
+//        }
         return object;
     }
 
